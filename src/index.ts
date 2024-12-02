@@ -2,14 +2,15 @@ import "reflect-metadata";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { buildSchema } from "type-graphql";
-import { CountryResolver } from "./resolvers/CountryResolver";
+import { CountryQueries } from "./resolvers/CountryQueries";
+import { CountryMutations } from "./resolvers/CountryMutations";
 import { dataSource } from "./datasource";
 
 const port = 4000;
 
 async function startServerApollo() {
   const schema = await buildSchema({
-    resolvers: [CountryResolver],
+    resolvers: [CountryQueries, CountryMutations],
   });
 
   const server = new ApolloServer({
