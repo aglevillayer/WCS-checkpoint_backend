@@ -13,6 +13,9 @@ export class CountryInput {
 
   @Field()
   emoji!: string;
+
+  @Field()
+  continent!: string;
 }
 
 @Resolver(Country)
@@ -27,7 +30,8 @@ export class CountryMutations {
         const country: Country = new Country(
           countryData.code,
           countryData.name,
-          countryData.emoji
+          countryData.emoji,
+          countryData.continent
         );
 
         await entityManager.save(country);

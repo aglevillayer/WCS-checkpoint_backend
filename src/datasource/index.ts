@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm";
+import { Country } from "../entities/Country";
 
 export const dataSource = new DataSource({
   type: "sqlite",
@@ -7,3 +8,7 @@ export const dataSource = new DataSource({
   synchronize: true,
   logging: "all",
 });
+
+export async function cleanDB() {
+  await dataSource.manager.clear(Country);
+}

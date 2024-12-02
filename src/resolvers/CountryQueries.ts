@@ -18,4 +18,16 @@ export class CountryQueries {
     console.log(country);
     return country;
   }
+
+  @Query((type) => [Country])
+  async getCountriesOfContinent(
+    @Arg("continent") continent: string
+  ): Promise<Country[]> {
+    console.log("getCountriesOfContinent");
+    const countries: Country[] = await Country.find({
+      where: { continent },
+    });
+    console.log(countries);
+    return countries;
+  }
 }

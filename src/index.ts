@@ -4,7 +4,7 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import { buildSchema } from "type-graphql";
 import { CountryQueries } from "./resolvers/CountryQueries";
 import { CountryMutations } from "./resolvers/CountryMutations";
-import { dataSource } from "./datasource";
+import { dataSource, cleanDB } from "./datasource";
 
 const port = 4000;
 
@@ -18,6 +18,7 @@ async function startServerApollo() {
   });
 
   console.log("datasource initialization");
+
   await dataSource.initialize();
 
   const { url } = await startStandaloneServer(server, {
