@@ -17,7 +17,7 @@ export class Country extends BaseEntity {
   @Field()
   emoji: string;
 
-  constructor(name: string = "", code: string = "", emoji: string = "") {
+  constructor(code: string = "", name: string = "", emoji: string = "") {
     super();
     this.code = code;
     this.name = name;
