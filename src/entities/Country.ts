@@ -7,7 +7,7 @@ export class Country extends BaseEntity {
   @PrimaryGeneratedColumn()
   @Field((type) => ID)
   id?: number;
-  @Column()
+  @Column({ unique: true })
   @Field()
   code: string;
   @Column()
@@ -19,8 +19,8 @@ export class Country extends BaseEntity {
 
   constructor(name: string = "", code: string = "", emoji: string = "") {
     super();
-    this.name = name;
     this.code = code;
+    this.name = name;
     this.emoji = emoji;
   }
 }
